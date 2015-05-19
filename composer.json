@@ -1,0 +1,23 @@
+{
+    "name": "myvendor/myapi",
+    "description":"n/a",
+    "license": "proprietary",
+    "require": {
+        "bear/package": "~1.0@dev",
+        "ray/aura-sql-module": "~1.0"
+    },
+    "require-dev": {
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "MyVendor\\MyApi\\": "src/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1.x-dev"
+        }
+    }
+}
