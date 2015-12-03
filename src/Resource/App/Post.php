@@ -6,11 +6,12 @@ use BEAR\RepositoryModule\Annotation\Cacheable;
 use BEAR\Resource\Annotation\Embed;
 use BEAR\Resource\Annotation\Link;
 use BEAR\Resource\Exception\ResourceNotFoundException;
+use BEAR\Resource\Exception\ServerErrorException;
 use BEAR\Resource\ResourceObject;
 use Ray\AuraSqlModule\AuraSqlInject;
 
 /**
- * @Cacheable
+ * @ Cacheable
  */
 class Post extends ResourceObject
 {
@@ -46,6 +47,21 @@ class Post extends ResourceObject
 
         $this->code = 201;
         $this->headers['Location'] = "/post?id={$id}";
+
+        return $this;
+    }
+
+    public function onDelete($id)
+    {
+        $sql  = 'DELETE FROM post WHERE id = :id';
+        $statement = $this->pdo->prepare($sql);
+        $bind = ['id' => $id];
+        $result = $statement->execute($bind);
+        if (! $result) {
+            $msg = sprintf('%s:%s', __METHOD__ , $id);
+            throw new ServerErrorException($msg);
+        }
+        $this->code = 200;
 
         return $this;
     }
