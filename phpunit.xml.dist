@@ -1,4 +1,10 @@
 <phpunit bootstrap="tests/bootstrap.php">
+    <php>
+        <var name="DB_DSN" value="mysql:host=localhost" />
+        <var name="DB_USER" value="root" />
+        <var name="DB_PASSWD" value="" />
+        <var name="DB_DBNAME" value="api_db" />
+    </php>
     <testsuites>
         <testsuite>
             <directory suffix="Test.php">tests</directory>
