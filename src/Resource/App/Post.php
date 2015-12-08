@@ -11,7 +11,7 @@ use BEAR\Resource\ResourceObject;
 use Ray\AuraSqlModule\AuraSqlInject;
 
 /**
- * @ Cacheable
+ * @Cacheable
  */
 class Post extends ResourceObject
 {
