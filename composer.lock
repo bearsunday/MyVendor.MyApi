@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b6c7f1a5f4bb65a64631205f06a0f883",
-    "content-hash": "c9111f6cf86401649edb3619313b444e",
+    "hash": "f1c408124e668378622ad065b91baaaf",
+    "content-hash": "52d315a7d91f3df34630b502c230f7d7",
     "packages": [
         {
             "name": "aura/cli",
@@ -665,6 +665,36 @@
             "time": "2014-09-09 13:34:57"
         },
         {
+            "name": "koriym/now",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/koriym/Koriym.Now.git",
+                "reference": "846f5021d5f893b7cd8d6a75f7948d7ce73b7bff"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/koriym/Koriym.Now/zipball/846f5021d5f893b7cd8d6a75f7948d7ce73b7bff",
+                "reference": "846f5021d5f893b7cd8d6a75f7948d7ce73b7bff",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Koriym\\Now\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Pprovides current time",
+            "keywords": [
+                "now"
+            ],
+            "time": "2015-11-09 10:33:13"
+        },
+        {
             "name": "koriym/printo",
             "version": "1.0.1",
             "source": {
@@ -748,6 +778,39 @@
                 "psr4"
             ],
             "time": "2014-12-07 13:10:31"
+        },
+        {
+            "name": "koriym/query-locator",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/koriym/Koriym.QueryLocator.git",
+                "reference": "ef697801efb4efd17043600fa0c194b1dbce1c4e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/koriym/Koriym.QueryLocator/zipball/ef697801efb4efd17043600fa0c194b1dbce1c4e",
+                "reference": "ef697801efb4efd17043600fa0c194b1dbce1c4e",
+                "shasum": ""
+            },
+            "require-dev": {
+                "ray/di": "~2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Koriym\\QueryLocator\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A SQL query locator",
+            "keywords": [
+                "sql"
+            ],
+            "time": "2015-12-08 06:52:54"
         },
         {
             "name": "mobiledetect/mobiledetectlib",
