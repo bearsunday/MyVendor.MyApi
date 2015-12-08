@@ -4,8 +4,13 @@ namespace MyVendor\MyApi\Resource\App;
 
 use BEAR\RepositoryModule\Annotation\Cacheable;
 use BEAR\RepositoryModule\Annotation\Refresh;
+use BEAR\Resource\Code;
 use BEAR\Resource\ResourceObject;
+use Koriym\Now\NowInject;
+use Koriym\QueryLocator\QueryLocatorInject;
+use Koriym\QueryLocator\QueryLocatorInterface;
 use Ray\AuraSqlModule\AuraSqlInject;
+use Ray\AuraSqlModule\AuraSqlInsertInject;
 
 /**
  * @Cacheable
@@ -13,12 +18,14 @@ use Ray\AuraSqlModule\AuraSqlInject;
 class Comment extends ResourceObject
 {
     use AuraSqlInject;
+    use AuraSqlInsertInject;
+    use QueryLocatorInject;
+    use NowInject;
 
     public function onGet($post_id)
     {
-        $sql  = 'SELECT * FROM comment WHERE post_id = :post_id';
         $bind = ['post_id' => $post_id];
-        $this->body = $this->pdo->fetchAll($sql, $bind);
+        $this->body = $this->pdo->fetchAssoc($this->query['comment'], $bind);
 
         return $this;
     }
@@ -28,16 +35,23 @@ class Comment extends ResourceObject
      */
     public function onPost($post_id, $body)
     {
-        $sql = 'INSERT INTO comment (post_id, body) VALUES(:post_id, :body)';
-        $statement = $this->pdo->prepare($sql);
-        $bind = [
-            'post_id' => $post_id,
-            'body' => $body
-        ];
-        $statement->execute($bind);
-        $id = $this->pdo->lastInsertId();
+        $this->insert
+            ->into('comment')
+            ->cols([
+                'post_id',
+                'body'
+            ])
+            ->bindValues([
+                'post_id' => $post_id,
+                'body' => $body
+            ])
+            ->set('updated_at', $this->now);
+        $sth = $this->pdo->prepare($this->insert->getStatement());
+        $sth->execute($this->insert->getBindValues());
+        $this->code = Code::CREATED;
 
         $this->code = 201;
+        $id = 1;
         $this->headers['Location'] = "/comment?id={$id}";
 
         return $this;

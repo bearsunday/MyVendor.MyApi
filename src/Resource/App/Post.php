@@ -5,10 +5,15 @@ namespace MyVendor\MyApi\Resource\App;
 use BEAR\RepositoryModule\Annotation\Cacheable;
 use BEAR\Resource\Annotation\Embed;
 use BEAR\Resource\Annotation\Link;
+use BEAR\Resource\Code;
 use BEAR\Resource\Exception\ResourceNotFoundException;
 use BEAR\Resource\Exception\ServerErrorException;
 use BEAR\Resource\ResourceObject;
+use Koriym\Now\NowInject;
+use Koriym\QueryLocator\QueryLocatorInject;
+use Ray\AuraSqlModule\AuraSqlDeleteInject;
 use Ray\AuraSqlModule\AuraSqlInject;
+use Ray\AuraSqlModule\AuraSqlInsertInject;
 
 /**
  * @Cacheable
@@ -16,6 +21,10 @@ use Ray\AuraSqlModule\AuraSqlInject;
 class Post extends ResourceObject
 {
     use AuraSqlInject;
+    use AuraSqlInsertInject;
+    use AuraSqlDeleteInject;
+    use NowInject;
+    use QueryLocatorInject;
 
     /**
      * @Embed(rel="comment", src="app://self/comment?post_id={id}")
@@ -23,9 +32,7 @@ class Post extends ResourceObject
      */
     public function onGet($id)
     {
-        $sql  = 'SELECT * FROM post WHERE id = :id';
-        $bind = ['id' => $id];
-        $post =  $this->pdo->fetchOne($sql, $bind);
+        $post = $this->pdo->fetchOne($this->query['post'], ['id' => $id]);
         if (! $post) {
             throw new ResourceNotFoundException;
         }
@@ -36,16 +43,22 @@ class Post extends ResourceObject
 
     public function onPost($title, $body)
     {
-        $sql = 'INSERT INTO post (title, body) VALUES(:title, :body)';
-        $statement = $this->pdo->prepare($sql);
-        $bind = [
-            'title' => $title,
-            'body' => $body
-        ];
-        $statement->execute($bind);
-        $id = $this->pdo->lastInsertId();
-
+        $this->insert
+            ->into('post')
+            ->cols([
+                'title',
+                'body',
+                'updated_at'
+            ])
+            ->bindValues([
+                'title' => $title,
+                'body' => $body,
+                'updated_at' => $this->now
+            ]);
+        $sth = $this->pdo->prepare($this->insert->getStatement());
+        $sth->execute($this->insert->getBindValues());
         $this->code = 201;
+        $id = $this->pdo->lastInsertId();
         $this->headers['Location'] = "/post?id={$id}";
 
         return $this;
@@ -53,10 +66,12 @@ class Post extends ResourceObject
 
     public function onDelete($id)
     {
-        $sql  = 'DELETE FROM post WHERE id = :id';
-        $statement = $this->pdo->prepare($sql);
-        $bind = ['id' => $id];
-        $result = $statement->execute($bind);
+        $this->delete
+            ->from('post')
+            ->where('id = :id')
+            ->bindValue('id', $id);
+        $sth = $this->pdo->prepare($this->delete->getStatement());
+        $result = $sth->execute($this->delete->getBindValues());
         if (! $result) {
             $msg = sprintf('%s:%s', __METHOD__ , $id);
             throw new ServerErrorException($msg);
