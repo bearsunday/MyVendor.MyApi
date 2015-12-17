@@ -7,8 +7,8 @@
         "ray/aura-sql-module": "~1.0",
         "phpunit/dbunit": "~2.0",
         "phpunit/phpunit": "~4.8",
-        "koriym/query-locator": "^1.0",
-        "koriym/now": "^0.1.0"
+        "koriym/query-locator": "~1.0",
+        "koriym/now": "~1.0"
     },
     "require-dev": {
     },

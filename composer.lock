@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f1c408124e668378622ad065b91baaaf",
-    "content-hash": "52d315a7d91f3df34630b502c230f7d7",
+    "hash": "26781e35844087babcf5b8045553ec01",
+    "content-hash": "3ac75eb5304601495a3b8b02527ca31d",
     "packages": [
         {
             "name": "aura/cli",
@@ -666,17 +666,20 @@
         },
         {
             "name": "koriym/now",
-            "version": "0.1.0",
+            "version": "1.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/koriym/Koriym.Now.git",
-                "reference": "846f5021d5f893b7cd8d6a75f7948d7ce73b7bff"
+                "reference": "97f7e8ea652da7ba6a13ac9864cf162586e38d10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/koriym/Koriym.Now/zipball/846f5021d5f893b7cd8d6a75f7948d7ce73b7bff",
-                "reference": "846f5021d5f893b7cd8d6a75f7948d7ce73b7bff",
+                "url": "https://api.github.com/repos/koriym/Koriym.Now/zipball/97f7e8ea652da7ba6a13ac9864cf162586e38d10",
+                "reference": "97f7e8ea652da7ba6a13ac9864cf162586e38d10",
                 "shasum": ""
+            },
+            "require-dev": {
+                "ray/di": "~2.2"
             },
             "type": "library",
             "autoload": {
@@ -692,7 +695,7 @@
             "keywords": [
                 "now"
             ],
-            "time": "2015-11-09 10:33:13"
+            "time": "2015-12-08 18:42:38"
         },
         {
             "name": "koriym/printo",
@@ -781,16 +784,16 @@
         },
         {
             "name": "koriym/query-locator",
-            "version": "1.1.0",
+            "version": "1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/koriym/Koriym.QueryLocator.git",
-                "reference": "ef697801efb4efd17043600fa0c194b1dbce1c4e"
+                "reference": "b011e117591ffe12436a341e072ed54c6cbd1ea9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/koriym/Koriym.QueryLocator/zipball/ef697801efb4efd17043600fa0c194b1dbce1c4e",
-                "reference": "ef697801efb4efd17043600fa0c194b1dbce1c4e",
+                "url": "https://api.github.com/repos/koriym/Koriym.QueryLocator/zipball/b011e117591ffe12436a341e072ed54c6cbd1ea9",
+                "reference": "b011e117591ffe12436a341e072ed54c6cbd1ea9",
                 "shasum": ""
             },
             "require-dev": {
@@ -810,7 +813,7 @@
             "keywords": [
                 "sql"
             ],
-            "time": "2015-12-08 06:52:54"
+            "time": "2015-12-17 09:21:46"
         },
         {
             "name": "mobiledetect/mobiledetectlib",
@@ -1432,16 +1435,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "4.8.19",
+            "version": "4.8.21",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "b2caaf8947aba5e002d42126723e9d69795f32b4"
+                "reference": "ea76b17bced0500a28098626b84eda12dbcf119c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/b2caaf8947aba5e002d42126723e9d69795f32b4",
-                "reference": "b2caaf8947aba5e002d42126723e9d69795f32b4",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/ea76b17bced0500a28098626b84eda12dbcf119c",
+                "reference": "ea76b17bced0500a28098626b84eda12dbcf119c",
                 "shasum": ""
             },
             "require": {
@@ -1500,7 +1503,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2015-11-30 08:18:59"
+            "time": "2015-12-12 07:45:58"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -1646,16 +1649,16 @@
         },
         {
             "name": "ray/aura-sql-module",
-            "version": "1.2.1",
+            "version": "1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ray-di/Ray.AuraSqlModule.git",
-                "reference": "0af4cf2fc61e1e4336dec9ff7ae9308358e8921b"
+                "reference": "2298706981e011ebdb28d615950898a2c267e32c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ray-di/Ray.AuraSqlModule/zipball/0af4cf2fc61e1e4336dec9ff7ae9308358e8921b",
-                "reference": "0af4cf2fc61e1e4336dec9ff7ae9308358e8921b",
+                "url": "https://api.github.com/repos/ray-di/Ray.AuraSqlModule/zipball/2298706981e011ebdb28d615950898a2c267e32c",
+                "reference": "2298706981e011ebdb28d615950898a2c267e32c",
                 "shasum": ""
             },
             "require": {
@@ -1685,7 +1688,7 @@
                 "Ray module",
                 "pdo"
             ],
-            "time": "2015-11-02 19:14:44"
+            "time": "2015-12-10 00:52:23"
         },
         {
             "name": "ray/compiler",
@@ -1920,23 +1923,23 @@
         },
         {
             "name": "sebastian/diff",
-            "version": "1.4.0",
+            "version": "1.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/diff.git",
-                "reference": "2b0112e42c338afa9ad9dfeb94d66f6d84c2f828"
+                "reference": "13edfd8706462032c2f52b4b862974dd46b71c9e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/diff/zipball/2b0112e42c338afa9ad9dfeb94d66f6d84c2f828",
-                "reference": "2b0112e42c338afa9ad9dfeb94d66f6d84c2f828",
+                "url": "https://api.github.com/repos/sebastianbergmann/diff/zipball/13edfd8706462032c2f52b4b862974dd46b71c9e",
+                "reference": "13edfd8706462032c2f52b4b862974dd46b71c9e",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3"
             },
             "require-dev": {
-                "phpunit/phpunit": "~5"
+                "phpunit/phpunit": "~4.8"
             },
             "type": "library",
             "extra": {
@@ -1968,7 +1971,7 @@
             "keywords": [
                 "diff"
             ],
-            "time": "2015-12-06 07:21:36"
+            "time": "2015-12-08 07:14:41"
         },
         {
             "name": "sebastian/environment",
